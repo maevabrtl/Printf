@@ -4,7 +4,7 @@
 int main ()
 {
 	t_list *list;
-	list = f1("bonjour les %e coupaings");
+	list = f1("bonjour %c\n", 'g');
 	if (list == NULL)
 		return (0);
 	printf("%s\n", list->content);

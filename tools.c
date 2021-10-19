@@ -16,6 +16,8 @@ char	*ft_strchr(char *s, char c)
 {
 	while (*s != '\0' && *s != c)
 		s++;
+	if (s[0] == 'c')
+		return (s + 2);
 	return (s);
 }
 
@@ -38,4 +40,44 @@ void	ft_strncpy(char *dst, const char *src, int n)
 		dst[n] = src[n];
 		n--;
 	}
+}
+
+void	putstr(char *str)
+{
+	while (*str != '\0')
+	{
+		write(1, &(*str), 1);
+		str++;
+	}
+}
+
+
+
+
+
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = s;
+	while (i < n)
+	{
+		*str = 0;
+		i++;
+		str++;
+	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ret;
+
+	ret = malloc(count * size);
+	if (ret = NULL)
+		return (NULL);
+	ft_bzero(ret, count * size);
+	return (ret);
 }
