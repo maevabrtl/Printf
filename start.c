@@ -1,4 +1,5 @@
 #include "libftprintf.h"
+
 void	ft_printf(char	*str, ...)
 {
 	t_list *lstfirst;
@@ -92,8 +93,6 @@ void	handle_percent(t_list *lst, int nbargs)
 
 
 /*
-
-- Check pourquoi j'utilise lstnew et pas addback et ça marche -> parce que je fais lstnew sur lst->next
 - faire fonction qui compte le nombre d'args -> et tester
 - découper ce code là en plus petites fonctions
 - faire mes fonctions de convertion et tester

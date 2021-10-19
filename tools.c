@@ -81,3 +81,40 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(ret, count * size);
 	return (ret);
 }
+
+// working
+int	count_args(char *str)
+{
+	int nbargs;
+	int ct;
+
+	nbargs = 0;
+	ct = 0;
+	while (*str != '\0')
+	{
+		if (*str == '%')
+			nbargs++;
+		*str++;
+	}
+	return (nbargs);
+}
+
+
+//need to find how to put type shit in 25 lines
+t_list *get_the_args(int nbargs, ...)
+{
+	t_list *arglist;
+	va_list args;
+
+	t_list *arglist = malloc(sizeof(t_list *));
+	if (arglist == NULL)
+		return (NULL);
+	va_start(args, nbargs);
+	while (nbargs > 0)
+	{
+		arglist->content = va_arg(args, 'type');
+		nbargs--;
+	}
+	va_end(args);
+	return (arglist)
+}
