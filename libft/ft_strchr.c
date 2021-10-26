@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "../libftprintf.h"
 
 char	*ft_strchr(char *s, char c)
 {

@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "../libftprintf.h"
 
 // pr itoa_base
 void	*ft_calloc(size_t count, size_t size)

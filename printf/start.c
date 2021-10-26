@@ -1,15 +1,18 @@
-#include "libftprintf.h"
+#include "../libftprintf.h"
 
 void	ft_printf(char	*str, ...)
 {
 	t_list *lstfirst;
 	int nbargs;
+	va_list	args;
 
 	if (!str)
-		return (NULL);
+		return ;
 	lstfirst = ft_cut(str);
 	nbargs = count_args(str);
-	handle_percent(lstfirst, nbargs);
+	va_start(args, nbargs);
+	handle_percent(lstfirst, nbargs, args);
+	va_end(args);
 }
 
 t_list	*ft_cut(char *str)
@@ -40,15 +43,15 @@ t_list	*ft_cut(char *str)
 	return (lstfirst);
 }
 
-void	handle_percent(t_list *lst, int nbargs)
+void	handle_percent(t_list *lst, int nbargs, va_list args)
 {
-	va_list	args;
-	va_start(args, nbargs);
+	int current;
+
 	while (lst != NULL)
 	{
 		if (lst->content[0] != '%')
 			putstr(lst->content);
-		else if (lst->content[1] == 's')
+		/*else if (lst->content[1] == 's')
 		{
 			va_arg(args, char *);
 			putstr(args);
@@ -64,23 +67,22 @@ void	handle_percent(t_list *lst, int nbargs)
 		{
 			va_arg(args, void *);
 			// ??
-		}
+		}*/
 		else if (lst->content[1] == 'i')
 		{
-			va_arg(args, int);
-			putstr(ft_itoa_base(args, 10));
+			current = va_arg(args, int);
+			putstr(ft_itoa_base(current, 10));
 		}
-		else if (lst->content[1] == 'u' || lst->content[1] == 'x')
+		/*else if (lst->content[1] == 'u' || lst->content[1] == 'x')
 		{
-			va_args(args, unsigned int);
+			va_arg(args, unsigned int);
 			if (lst->content[1] == 'x')
 				putstr(ft_itoa_base(args, 16));
 			else
 				putstr(ft_itoa_base(args, 10));
-		}
+		}*/
 		lst = lst->next;
 	}
-	va_end(args);
 }
 
 

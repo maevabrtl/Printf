@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "../libftprintf.h"
 
 void	ft_strncpy(char *dst, const char *src, int n)
 {

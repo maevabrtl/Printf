@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "../libftprintf.h"
 
 // pr itoa_base
 void	ft_bzero(void *s, size_t n)

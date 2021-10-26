@@ -1,10 +1,10 @@
-#include "libftprintf.h"
+#include "../libftprintf.h"
 
 t_list	*maketolist(char *str, t_list *lst)
 {
 	lst->next = ft_lstnew(str);
 	lst = lst->next;
-	return (lst)
+	return (lst);
 }
 
 // working

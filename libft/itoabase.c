@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "../libftprintf.h"
 
 static int	nbrlen(int n, int base)
 {
@@ -15,7 +15,7 @@ static int	nbrlen(int n, int base)
 
 static char	*intmin(char *r)
 {
-	ft_strlcpy(r, "-2147483648", 12);
+	ft_strncpy(r, "-2147483648", 12);
 	return (r);
 }
 
