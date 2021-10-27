@@ -5,17 +5,23 @@ static int	nbrlen(int n, int base)
 	int	nlen;
 
 	nlen = 1;
-	while (n / 10)
+	while (n / base)
 	{
-		n /= 10;
+		n /= base;
 		nlen++;
 	}
 	return (nlen);
 }
 
-static char	*intmin(char *r)
+static char	*special_cases(int n, char *r, int base)
 {
-	ft_strncpy(r, "-2147483648", 12);
+	if (n == 0)
+	{
+		r[0] = '0';
+		return (r);
+	}
+	if (base == 10)
+		ft_strncpy(r, "-2147483648", 12);
 	return (r);
 }
 
@@ -30,26 +36,24 @@ char		*ft_itoa_base(int n, int base)
 	char	*ret;
 	int		nlen;
 	int		i;
+	char	*strbase;
 
-	if (base < 2 || base > 16)
-		return (NULL);
+	strbase = "0123456789abcdef";
 	nlen = nbrlen(n, base);
 	if (n < 0)
 		nlen++;
-	if (!(ret = (char *)ft_calloc(nlen + 1, sizeof(char))))
-		return (0);
-	if (n == -2147483648)
-		return (intmin(ret));
+	ret = (char *)ft_calloc(nlen + 1, sizeof(char));
+	if (ret == NULL)
+		return (NULL);
+	if (n == -2147483648 || n == 0)
+		return (special_cases(n, ret, base));
 	if (n < 0)
 		n = neg(n, ret);
-	if (n == 0)
-		ret[0] = '0';
-	i = nlen - 1;
-	while (n)
+	i = nlen;
+	while (n && i-- >= 0)
 	{
-		ret[i] = n % 10 + 48;
-		n /= 10;
-		i--;
+		ret[i] = strbase[n % base];
+		n /= base;
 	}
 	return (ret);
 }
