@@ -1,4 +1,4 @@
-#include "../libftprintf.h"
+#include "libftprintf.h"
 
 void	ft_printf(char	*str, ...)
 {
@@ -31,10 +31,10 @@ t_list	*ft_cut(char *str)
 	while (str[ct] != '\0')
 	{
 		if (lst != NULL)
-			lst = ft_parse(str, &ct, lst, lstfirst);
+			lst = ft_parse(str, &ct, lst);
 		else
 		{
-			lst = ft_parse(str, &ct, lst, lstfirst);
+			lst = ft_parse(str, &ct, lst);
 			lstfirst = lst;
 		}
 		if (lstfirst == NULL || lst == NULL)
@@ -49,6 +49,7 @@ void	handle_percent(t_list *lst, va_list args)
 {
 	char	*ret;
 
+	ret = NULL;
 	while (lst != NULL)
 	{
 		if (lst->content[0] != '%')

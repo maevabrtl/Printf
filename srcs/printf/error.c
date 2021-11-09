@@ -1,4 +1,4 @@
-#include "../libftprintf.h"
+#include "libftprintf.h"
 
 int		check_error(char *str)
 {

@@ -1,4 +1,4 @@
-#include "../libftprintf.h"
+#include "libftprintf.h"
 
 int		find_percent_index(char *str, int si)
 {
@@ -21,7 +21,7 @@ t_list	*maketolist(char *str, t_list *lst)
 }
 
 
-t_list	*ft_parse(char *str, int *ct, t_list *lst, t_list *lstfirst)
+t_list	*ft_parse(char *str, int *ct, t_list *lst)
 {
 	int		i;
 	char	*stocopy;

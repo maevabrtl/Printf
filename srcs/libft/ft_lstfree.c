@@ -1,4 +1,4 @@
-#include "../libftprintf.h"
+#include "libftprintf.h"
 
 int		ft_lstfree(t_list *lst)
 {

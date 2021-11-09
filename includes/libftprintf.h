@@ -30,7 +30,7 @@ int		count_args(char *str);
 t_list	*maketolist(char *str, t_list *lst);
 void	ft_printf(char	*str, ...);
 t_list	*ft_cut(char *str);
-t_list	*ft_parse(char *str, int *ct, t_list *lst, t_list *lstfirst);
+t_list	*ft_parse(char *str, int *ct, t_list *lst);
 void	handle_percent(t_list *lst, va_list args);
 void	u_percent(t_list *lst, va_list args, char *ret);
 void	i_percent(t_list *lst, va_list args, char *ret);

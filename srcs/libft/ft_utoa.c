@@ -1,4 +1,4 @@
-#include "../libftprintf.h"
+#include "libftprintf.h"
 
 static int	utoa_nbrlen(size_t n, int base)
 {
