@@ -48,22 +48,24 @@ t_list	*ft_cut(char *str)
 void	handle_percent(t_list *lst, va_list args)
 {
 	char	*ret;
-
+	char	*content;
+	
 	ret = NULL;
 	while (lst != NULL)
 	{
-		if (lst->content[0] != '%')
-			putstr(lst->content);
-		else if (lst->content[1] == 's')
-			putstr((char *)va_arg(args, char *));
-		else if (lst->content[1] == 'c')
+		content = (char *)lst->content;
+		if (content[0] != '%')
+			ft_putstr(content);
+		else if (content[1] == 's')
+			ft_putstr((char *)va_arg(args, char *));
+		else if (content[1] == 'c')
 			ft_putchar((int)va_arg(args, int));
-		else if (lst->content[1] == '%')
+		else if (content[1] == '%')
 			ft_putchar('%');
-		else if (lst->content[1] == 'p' || lst->content[1] == 'x'
-		|| lst->content[1] == 'X' || lst->content[1] == 'u')
+		else if (content[1] == 'p' || content[1] == 'x'
+		|| content[1] == 'X' || content[1] == 'u')
 			u_percent(lst, args, ret);
-		else if (lst->content[1] == 'd' || lst->content[1] == 'i')
+		else if (content[1] == 'd' || content[1] == 'i')
 			i_percent(lst, args, ret);
 		lst = lst->next;
 	}
@@ -71,41 +73,47 @@ void	handle_percent(t_list *lst, va_list args)
 
 void	u_percent(t_list *lst, va_list args, char *ret)
 {
-	if (lst->content[1] == 'p')
+	char	*content;
+
+	content = (char *)lst->content;
+	if (content[1] == 'p')
 	{
-		putstr("0x");
+		ft_putstr("0x");
 		ret = utoa((size_t)va_arg(args, void *), 16, 0);
-		putstr(ret);
+		ft_putstr(ret);
 	}
-	else if (lst->content[1] == 'x')
+	else if (content[1] == 'x')
 	{
 		ret = utoa((unsigned int)va_arg(args, unsigned int), 16, 0);
-		putstr(ret);
+		ft_putstr(ret);
 	}
-	else if (lst->content[1] == 'X')
+	else if (content[1] == 'X')
 	{
 		ret = utoa((unsigned int)va_arg(args, unsigned int), 16, 1);
-		putstr(ret);
+		ft_putstr(ret);
 	}
-	else if (lst->content[1] == 'u')
+	else if (content[1] == 'u')
 	{
 		ret = utoa((unsigned int)va_arg(args, unsigned int), 10, 0);
-		putstr(ret);
+		ft_putstr(ret);
 	}
 	free(ret);
 }
 
 void	i_percent(t_list *lst, va_list args, char *ret)
 {
-	if (lst->content[1] == 'i')
+	char	*content;
+
+	content = (char *)lst->content;
+	if (content[1] == 'i')
 	{
 		ret = ft_itoa_base((int)va_arg(args, int), 10);
-		putstr(ret);
+		ft_putstr(ret);
 	}
-	else if (lst->content[1] == 'd')
+	else if (content[1] == 'd')
 	{
 		ret = ft_itoa_base((size_t)va_arg(args, size_t), 10);
-		putstr(ret);
+		ft_putstr(ret);
 	}
 	free(ret);
 }

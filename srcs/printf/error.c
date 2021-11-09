@@ -7,7 +7,7 @@ int		check_error(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		i += ft_strchr(&str[i], '%');
+		i += ft_strchr_index(&str[i], '%');
 		if (str[i] == '\0')
 			return (0);
 		if (str[i] == '%')
