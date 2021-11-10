@@ -12,6 +12,7 @@ INCS = $(addprefix $(PATH_INC)/, libftprintf.h)
 #*****************************************************************************#
 #                                  PRINTF                                     #
 #*****************************************************************************#
+
 PATH_PRINTF = $(PATH_SRC)/printf
 PATH_OBJ_PRINTF = $(PATH_OBJ)/printf
 FILES_PRINTF = error ft_printf tools
